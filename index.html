@@ -1,89 +1,79 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>NEOX Cloud Live v1.0</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NEOX Cloud Live v2.1</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="topbar">
-  <div class="brand"><strong>NEOX Cloud</strong><span class="badge">LIVE v1.0</span></div>
+  <div class="brand"><strong>NEOX Cloud</strong><span class="badge">LIVE v2.1</span><span id="premiumBadge" class="premium-badge hidden">PREMIUM</span></div>
   <div class="top-actions"><span id="userId">NEOX--------</span><span id="clock">--:--:--</span></div>
 </header>
 <main class="layout">
-  <section class="panel hero">
-    <div><p class="eyebrow">PERSONAL CLOUD SIMULATOR</p><h1>NEOX Cloud Live</h1><p class="muted">Five persistent virtual servers, simulated locally in your browser.</p></div>
-    <div class="hero-right"><div class="server-state"><span id="stateDot"></span><span id="stateText">ONLINE</span></div><button id="newIdBtn" class="ghost">new ID</button></div>
-  </section>
+<section class="panel hero">
+  <div><p class="eyebrow">PERSONAL CLOUD SIMULATOR</p><h1>NEOX Cloud Live</h1><p class="muted">A continuously evolving local cloud lab. No real payment and no real server charges.</p></div>
+  <div class="hero-right"><div class="server-state"><span id="stateDot"></span><span id="stateText">ONLINE</span></div><button id="newIdBtn" class="ghost">new ID</button></div>
+</section>
 
-  <section class="panel servers">
-    <div class="panel-title"><span>VIRTUAL SERVERS</span><span id="serverCount">0/5</span></div>
-    <div id="serverGrid" class="server-grid"></div>
-  </section>
+<section class="panel premium-panel">
+  <div><div><p class="eyebrow">NEOX CLOUD PREMIUM</p><h2 id="premiumTitle">Premium simulation</h2><p id="premiumText" class="muted">Unlock extra simulated cloud features. This is a fake in-browser purchase.</p></div><div class="premium-price"><strong id="premiumPrice">$1</strong><span>/ simulated month</span><button id="premiumBtn">ACTIVATE PREMIUM</button></div></div>
+  <div class="premium-note">💳 SIMULATION ONLY — no money, card, payment provider, or external billing is used.</div>
+</section>
 
-  <section class="metrics">
-    <article class="panel metric"><span>CPU</span><strong id="cpu">--%</strong><div class="bar"><i id="cpuBar"></i></div></article>
-    <article class="panel metric"><span>RAM</span><strong id="ram">--%</strong><div class="bar"><i id="ramBar"></i></div></article>
-    <article class="panel metric"><span>STORAGE</span><strong id="storage">--%</strong><div class="bar"><i id="storageBar"></i></div></article>
-    <article class="panel metric"><span>NETWORK</span><strong id="latency">-- ms</strong><small id="bandwidth">-- Mbps</small></article><article class="panel metric"><span>UPTIME</span><strong id="uptime">00:00:00</strong><small>persistent server clock</small></article>
-  </section>
+<section class="panel servers"><div class="panel-title"><span>VIRTUAL SERVERS</span><span id="serverCount">0/5</span></div><div id="serverGrid" class="server-grid"></div></section>
 
-  <section class="dashboard-grid">
-    <section class="panel console">
-      <div class="panel-title"><span>NEOX CONSOLE</span><span id="promptState">ready</span></div>
-      <div id="output" class="output"></div>
-      <form id="commandForm"><span>neox-cloud&gt;</span><input id="command" autocomplete="off" spellcheck="false" placeholder="type help"></form>
-    </section>
-    <section class="panel">
-      <div class="panel-title"><span>LIVE LOGS</span><span id="eventCount">0 events</span></div>
-      <div id="logs" class="logs"></div>
-    </section>
-  </section>
+<section class="metrics">
+<article class="panel metric"><span>CPU</span><strong id="cpu">--%</strong><div class="bar"><i id="cpuBar"></i></div></article>
+<article class="panel metric"><span>RAM</span><strong id="ram">--%</strong><div class="bar"><i id="ramBar"></i></div></article>
+<article class="panel metric"><span>STORAGE</span><strong id="storage">--%</strong><div class="bar"><i id="storageBar"></i></div></article>
+<article class="panel metric"><span>NETWORK</span><strong id="latency">-- ms</strong><small id="bandwidth">-- Mbps</small></article>
+<article class="panel metric"><span>UPTIME</span><strong id="uptime">00:00:00</strong><small>simulated server clock</small></article>
+</section>
 
-  <section class="dashboard-grid">
-    <section class="panel">
-      <div class="panel-title"><span>PROCESSES</span><span id="processCount">0</span></div>
-      <div id="processes" class="table"></div>
-    </section>
-    <section class="panel">
-      <div class="panel-title"><span>NETWORK</span><span id="networkStatus">CONNECTED</span></div>
-      <div id="network" class="table"></div>
-    </section>
-  </section>
+<section class="dashboard-grid">
+<section class="panel console"><div class="panel-title"><span>NEOX CONSOLE</span><span id="promptState">ready</span></div><div id="output" class="output"></div><form id="commandForm"><span>neox-cloud&gt;</span><input id="command" autocomplete="off" spellcheck="false" placeholder="type help"></form></section>
+<section class="panel"><div class="panel-title"><span>LIVE LOGS</span><span id="eventCount">0 events</span></div><div id="logs" class="logs"></div></section>
+</section>
 
-  <section class="dashboard-grid">
-    <section class="panel">
-      <div class="panel-title"><span>VIRTUAL FILES</span><span id="storageText">0 files</span></div>
-      <div id="files" class="table"></div>
-    </section>
-    <section class="panel">
-      <div class="panel-title"><span>USERS & PERMISSIONS</span><span>LOCAL</span></div>
-      <div id="users" class="table"></div>
-    </section>
-  </section>
+<section class="dashboard-grid">
+<section class="panel"><div class="panel-title"><span>PROCESSES & SERVICES</span><span id="processCount">0</span></div><div id="processes" class="table"></div></section>
+<section class="panel"><div class="panel-title"><span>NETWORK / PORTS / DNS</span><span id="networkStatus">CONNECTED</span></div><div id="network" class="table"></div></section>
+</section>
 
-  <section class="dashboard-grid">
-    <section class="panel">
-      <div class="panel-title"><span>DIAGNOSTICS</span><button id="diagnoseBtn" class="small">RUN</button></div>
-      <div id="diagnostics" class="diagnostics">System diagnostics ready.</div>
-    </section>
-    <section class="panel">
-      <div class="panel-title"><span>EVENTS / INCIDENTS</span><span id="incidentState">stable</span></div>
-      <div id="incidents" class="diagnostics">No active incidents.</div>
-    </section>
-  </section>
+<section class="dashboard-grid">
+<section class="panel"><div class="panel-title"><span>VIRTUAL FILES</span><span id="storageText">0 files</span></div><div id="files" class="table"></div></section>
+<section class="panel"><div class="panel-title"><span>USERS & PERMISSIONS</span><span>LOCAL</span></div><div id="users" class="table"></div></section>
+</section>
 
-  <section class="panel settings">
-    <div class="panel-title"><span>SERVER SETTINGS</span><span>LOCAL PERSISTENCE</span></div>
-    <div class="settings-grid">
-      <label>Hostname<input id="hostname" value="neox-server"></label>
-      <label>Mode<select id="serverMode"><option>Standard</option><option>Performance</option><option>Eco</option><option>Maintenance</option></select></label>
-      <label>Auto events<input id="autoEvents" type="checkbox" checked></label>
-      <label>Notifications<input id="notifications" type="checkbox" checked></label>
-    </div>
-    <div class="settings-actions"><button id="saveSettings">SAVE SETTINGS</button><button id="resetServer" class="danger">RESET SERVER</button></div>
-  </section>
+<section class="dashboard-grid">
+<section class="panel"><div class="panel-title"><span>BACKUPS / SNAPSHOTS</span><span id="backupCount">0</span></div><div id="backups" class="table"></div></section>
+<section class="panel"><div class="panel-title"><span>SCHEDULED TASKS</span><span id="taskCount">0</span></div><div id="tasks" class="table"></div></section>
+</section>
+
+<section class="dashboard-grid">
+<section class="panel"><div class="panel-title"><span>SECURITY</span><span id="securityState">NORMAL</span></div><div id="security" class="table"></div></section>
+<section class="panel"><div class="panel-title"><span>API / SERVICES</span><span id="serviceCount">0</span></div><div id="services" class="table"></div></section>
+</section>
+
+<section class="dashboard-grid">
+<section class="panel"><div class="panel-title"><span>DIAGNOSTICS</span><button id="diagnoseBtn" class="small">RUN</button></div><div id="diagnostics" class="diagnostics">System diagnostics ready.</div></section>
+<section class="panel"><div class="panel-title"><span>EVENTS / INCIDENTS</span><span id="incidentState">stable</span></div><div id="incidents" class="diagnostics">No active incidents.</div></section>
+</section>
+
+<section class="panel"><div class="panel-title"><span>110-FEATURE MATRIX</span><span id="featureCount">0/110</span></div><div id="features" class="feature-grid"></div></section>
+
+<section class="panel settings">
+<div class="panel-title"><span>SERVER SETTINGS</span><span>LOCAL PERSISTENCE</span></div>
+<div class="settings-grid">
+<label>Hostname<input id="hostname" value="neox-server"></label>
+<label>Mode<select id="serverMode"><option>Standard</option><option>Performance</option><option>Eco</option><option>Maintenance</option></select></label>
+<label>Auto events<input id="autoEvents" type="checkbox" checked></label>
+<label>Notifications<input id="notifications" type="checkbox" checked></label>
+</div>
+<div class="settings-actions"><button id="saveSettings">SAVE SETTINGS</button><button id="resetServer" class="danger">RESET SERVER</button></div>
+</section>
 </main>
 <script src="app.js"></script>
 </body>
