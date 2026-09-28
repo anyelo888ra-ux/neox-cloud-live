@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>NEOX Cloud Live</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <strong>NEOX Cloud</strong>
+      <span class="badge">LIVE</span>
+    </div>
+    <span id="clock">--:--:--</span>
+  </header>
+
+  <main class="layout">
+    <section class="panel hero">
+      <div>
+        <p class="eyebrow">PUBLIC SERVER SIMULATION</p>
+        <h1>NEOX-01</h1>
+        <p class="muted">A live virtual server anyone can monitor and control.</p>
+      </div>
+      <div class="server-state"><span id="stateDot"></span><span id="stateText">ONLINE</span></div>
+    </section>
+
+    <section class="metrics">
+      <article class="panel metric"><span>CPU</span><strong id="cpu">--%</strong><div class="bar"><i id="cpuBar"></i></div></article>
+      <article class="panel metric"><span>RAM</span><strong id="ram">--%</strong><div class="bar"><i id="ramBar"></i></div></article>
+      <article class="panel metric"><span>STORAGE</span><strong id="storage">52%</strong><div class="bar"><i style="width:52%"></i></div></article>
+      <article class="panel metric"><span>UPTIME</span><strong id="uptime">00:00:00</strong></article>
+    </section>
+
+    <section class="panel console">
+      <div class="panel-title"><span>NEOX CONSOLE</span><span id="promptState">ready</span></div>
+      <div id="output" class="output"></div>
+      <form id="commandForm">
+        <span>neox-cloud&gt;</span>
+        <input id="command" autocomplete="off" spellcheck="false" placeholder="type help">
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title"><span>LIVE LOGS</span><span id="eventCount">0 events</span></div>
+      <div id="logs" class="logs"></div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
